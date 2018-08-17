@@ -1,0 +1,48 @@
+/* 
+ * Task #1 - Insert new client
+ */
+INSERT INTO clients
+	(clientFirstname, clientLastname, clientEmail, clientPassword, comments)
+VALUES
+	("Tony", "Stark", "tony@starkent.com", "Iam1ronM@n", "I am the real Ironman");
+
+
+/* 
+ * Task #2 - Modify the Tony Stark record
+ */
+UPDATE
+	clients
+SET
+	clientLevel = 3
+WHERE
+	clientId = 4;
+
+/* 
+ * Task #3 - Modify Nylon Rope to Climbing Rope
+ */
+UPDATE 
+        acme.inventory
+SET 
+        invName=REPLACE(invName, 'Nylon Rope', 'Climbing Rope'), invDescription=REPLACE(invDescription, 'nylon rope', 'climbing rope')
+WHERE 
+        invName LIKE 'Nylon Rope%';
+
+/*
+ * Task #4 - Inner join to find inventory items in Misc category
+ */
+SELECT 
+	inventory.invName, categories.categoryName, categories.categoryId
+FROM 
+	categories
+INNER JOIN inventory ON categories.categoryId=inventory.categoryId
+WHERE 
+        inventory.categoryId = 3;    
+/*
+ * Task #5 - Delete Koenigsegg CCS car from database. 
+ */
+DELETE 
+FROM
+	inventory
+WHERE
+	invName = 'Koenigsegg CCX car';
+
